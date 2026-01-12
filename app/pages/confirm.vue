@@ -9,16 +9,7 @@
     </UCard>
 </template>
 <script setup>
-    const supabase = useSupabaseClient()
-    onMounted(async () => {
-        const {data, error} = await supabase.auth.exchangeCodeForSession(window.location.href)
-        if (error) {
-            console.error(error)
-            return
-        }
-        await nextTick()   
-        useRedirectAuth()
-        // navigateTo('/')
-    })
+ 
+    useRedirectAuth()
 
 </script>
