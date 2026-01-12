@@ -11,9 +11,15 @@
 <script setup>
     const supabase = useSupabaseClient()
     onMounted(async () => {
-        await supabase.auth.exchangeCodeForSession(window.location.href)
-        useRedirectAuth()
-        // navigateTo('/')
+        const {data, error} = await supabase.auth.exchangeCodeForSession(window.location.href)
+        if (error) {
+            console.error(error)
+            return
+        }
+        await nextTick()
+
+        navigateTo('/')        
+        // useRedirectAuth()
     })
 
 </script>
