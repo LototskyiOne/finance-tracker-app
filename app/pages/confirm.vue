@@ -5,9 +5,15 @@
         </template>
 
         <div>You will be redirected soon</div>
-        <UButton variant="outline" color="neutral">Redirect by click</UButton>
+        <UButton variant="outline" color="neutral" @click="useRedirectAuth()">Redirect by click</UButton>
     </UCard>
 </template>
 <script setup>
-    useRedirectAuth()
+    const supabase = useSupabaseClient()
+    onMounted(async () => {
+        await supabase.auth.exchangeCodeForSession(window.location.href)
+        useRedirectAuth()
+        // navigateTo('/')
+    })
+
 </script>
