@@ -16,10 +16,9 @@
             console.error(error)
             return
         }
-        await nextTick()
-
-        navigateTo('/')        
-        // useRedirectAuth()
+        await nextTick()   
+        useRedirectAuth()
+        // navigateTo('/')
     })
 
 </script>
